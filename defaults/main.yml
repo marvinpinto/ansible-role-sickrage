@@ -6,3 +6,5 @@ sickrage_app_pid_file: '/tmp/sickrage.pid'
 
 # Daemon config
 sickrage_daemon_user: 'sickdaemon'
+sickrage_daemon_port: '8081'
+sickrage_daemon_extra_opts: " --port={{ sickrage_daemon_port }}"
