@@ -1,0 +1,10 @@
+---
+# Application config
+sickrage_app_src_directory: '/opt/sickrage_src'
+sickrage_app_data_directory: '/opt/sickrage_data'
+sickrage_app_pid_file: '/tmp/sickrage.pid'
+
+# Daemon config
+sickrage_daemon_user: 'sickdaemon'
+sickrage_daemon_port: '8081'
+sickrage_daemon_extra_opts: " --port={{ sickrage_daemon_port }}"

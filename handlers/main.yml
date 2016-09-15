@@ -1,0 +1,5 @@
+---
+- name: 'restart-ansible-role-sickrage'
+  service:
+    name: 'sickrage'
+    state: 'restarted'

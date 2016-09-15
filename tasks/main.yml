@@ -1,0 +1,74 @@
+---
+- name: 'Install a few pre-requisite packages'
+  apt:
+    name: "{{ item }}"
+    state: 'installed'
+  with_items:
+    - 'libxslt1-dev'
+    - 'libxml2-dev'
+    - 'libxml2'
+    - 'libssl-dev'
+    - 'libffi-dev'
+    - 'python-pip'
+    - 'python-dev'
+    - 'libssl-dev'
+
+- name: 'Install pyopenssl'
+  pip:
+    name: 'pyopenssl'
+    state: 'latest'
+    umask: '0022'
+  notify: 'restart-ansible-role-sickrage'
+
+- name: 'Create the user that the sickrage daemon will run as'
+  user:
+    name: "{{ sickrage_daemon_user }}"
+
+- name: 'Create the sickrage source directory'
+  file:
+    path: "{{ sickrage_app_src_directory }}"
+    state: 'directory'
+    owner: "{{ sickrage_daemon_user }}"
+    mode: '0755'
+
+- name: 'Create the sickrage data directory'
+  file:
+    path: "{{ sickrage_app_data_directory }}"
+    state: 'directory'
+    owner: "{{ sickrage_daemon_user }}"
+    mode: '0755'
+
+- name: 'Git clone the sickrage source locally'
+  git:
+    clone: 'yes'
+    dest: "{{ sickrage_app_src_directory }}"
+    force: 'yes'
+    repo: 'https://github.com/SickRage/SickRage.git'
+    version: '2016.09.10-1'  # Corresponding release tag
+  notify: 'restart-ansible-role-sickrage'
+
+- name: 'Set the contents of the /etc/default/sickrage file appropriately'
+  template:
+    src: 'sickrage.j2'
+    dest: '/etc/default/sickrage'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify: 'restart-ansible-role-sickrage'
+
+- name: 'Create the sickrage init script'
+  copy:
+    src: 'init.ubuntu'
+    dest: '/etc/init.d/sickrage'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+    force: 'yes'
+
+- name: 'Start the sickrage daemon'
+  service:
+    name: 'sickrage'
+    state: 'started'
+    enabled: 'yes'
+
+- meta: flush_handlers
