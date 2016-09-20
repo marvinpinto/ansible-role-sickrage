@@ -57,6 +57,7 @@
     group: 'root'
     mode: '0755'
     force: 'yes'
+  notify: 'restart-ansible-role-sickrage'
 
 - name: 'Start the sickrage daemon'
   service:
