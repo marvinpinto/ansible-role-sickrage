@@ -31,13 +31,6 @@
     owner: "{{ sickrage_daemon_user }}"
     mode: '0755'
 
-- name: 'Create the sickrage data directory'
-  file:
-    path: "{{ sickrage_app_data_directory }}"
-    state: 'directory'
-    owner: "{{ sickrage_daemon_user }}"
-    mode: '0755'
-
 - name: 'Git clone the sickrage source locally'
   git:
     clone: 'yes'
