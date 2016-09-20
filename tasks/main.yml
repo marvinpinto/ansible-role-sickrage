@@ -59,10 +59,10 @@
     force: 'yes'
   notify: 'restart-ansible-role-sickrage'
 
+- meta: flush_handlers
+
 - name: 'Start the sickrage daemon'
   service:
     name: 'sickrage'
     state: 'started'
     enabled: 'yes'
-
-- meta: flush_handlers
