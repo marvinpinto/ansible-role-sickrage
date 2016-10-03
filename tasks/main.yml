@@ -37,7 +37,7 @@
     dest: "{{ sickrage_app_src_directory }}"
     force: 'yes'
     repo: 'https://github.com/SickRage/SickRage.git'
-    version: '2016.09.10-1'  # Corresponding release tag
+    version: '{{ sickrage_app_version }}'
   notify: 'restart-ansible-role-sickrage'
 
 - name: 'Set the contents of the /etc/default/sickrage file appropriately'
