@@ -12,6 +12,7 @@
     - 'python-pip'
     - 'python-dev'
     - 'libssl-dev'
+    - 'git'
 
 - name: 'Install pyopenssl'
   pip:
