@@ -3,7 +3,7 @@
 sickrage_app_src_directory: '/opt/sickrage_src'
 sickrage_app_data_directory: '/opt/sickrage_data'
 sickrage_app_pid_file: '/tmp/sickrage.pid'
-sickrage_app_version: '2016.09.28-1'  # Corresponding release tag
+sickrage_app_version: 'v2018.04.08-1'  # Release tag on https://github.com/SickRage/SickRage
 
 # Daemon config
 sickrage_daemon_user: 'sickdaemon'
