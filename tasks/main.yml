@@ -37,7 +37,7 @@
     clone: 'yes'
     dest: "{{ sickrage_app_src_directory }}"
     force: 'yes'
-    repo: 'https://github.com/SickRage/SickRage.git'
+    repo: 'https://github.com/SickChill/SickChill'
     version: '{{ sickrage_app_version }}'
   notify: 'restart-ansible-role-sickrage'
 

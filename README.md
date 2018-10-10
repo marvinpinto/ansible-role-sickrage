@@ -5,7 +5,7 @@ sickrage
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-sickrage-blue.svg?style=flat-square)](https://galaxy.ansible.com/marvinpinto/sickrage)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
 
-Ansible Galaxy role to install and manage [sickrage](https://sickrage.github.io).
+Ansible Galaxy role to install and manage [sickrage](https://github.com/SickChill/SickChill).
 
 
 Requirements
